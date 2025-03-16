@@ -2,7 +2,7 @@
 Note: This is still undergoing and has many issues, so you might have to debug at many stages during the installation.
 
 ## Overview
-This guide provides step-by-step instructions to install the IHP130 PDK and the necessary open-source tools for IC design and simulation. The installation script automates the setup process, ensuring all dependencies are properly configured.
+This guide provides step-by-step instructions to install the IHP130 PDK and the necessary open-source tools to get started with your design in Open-Source IHP130 PDK.
 
 ## Prerequisites
 Before running the installation script, ensure that:
