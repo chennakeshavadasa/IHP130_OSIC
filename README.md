@@ -1,4 +1,5 @@
 # IHP130 PDK Installation Guide
+Note: This is still undergoing and has bugs so you might have to debug at many stages of the installation.
 
 ## Overview
 This guide provides step-by-step instructions to install the IHP130 PDK and the necessary open-source tools for IC design and simulation. The installation script automates the setup process, ensuring all dependencies are properly configured.
@@ -151,5 +152,4 @@ If any tool fails to start, try re-installing the specific tool or checking for 
 - [MAGIC Documentation](http://opencircuitdesign.com/magic/)
 - [NGSPICE User Guide](http://ngspice.sourceforge.net/)
 
-For further assistance, check the official documentation links provided above.
 
