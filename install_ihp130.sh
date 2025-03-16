@@ -1,4 +1,3 @@
-
 #!/bin/bash
 
 # Exit immediately if a command exits with a non-zero status
@@ -36,6 +35,61 @@ git clone --recursive https://github.com/IHP-GmbH/IHP-Open-PDK.git "$PDK_DIR"
 cd "$PDK_DIR"
 git checkout dev
 
+# Install additional open-source tools
+echo "Installing open-source EDA tools..."
+mkdir -p "$HOME/OSIC"
+cd "$HOME/OSIC"
+
+echo "Installing XSCHEM..."
+git clone https://github.com/StefanSchippers/xschem.git xschem
+cd xschem
+./configure
+make
+sudo make install
+
+cd "$HOME/OSIC"
+echo "Installing MAGIC..."
+git clone git://opencircuitdesign.com/magic
+cd magic
+./configure
+make
+sudo make install
+
+cd "$HOME/OSIC"
+echo "Installing NGSPICE..."
+sudo apt-get update
+wget https://sourceforge.net/projects/ngspice/files/ng-spice-rework/43/ngspice-43.tar.gz/download -O ngspice-43.tar.gz
+tar -xvzf ngspice-43.tar.gz
+cd ngspice-43
+./configure
+make
+sudo make install
+
+cd "$HOME/OSIC"
+echo "Installing OPEN PDKs..."
+git clone git://opencircuitdesign.com/open_pdks
+cd open_pdks
+./configure --enable-sky130-pdk
+sudo make
+sudo make install
+
+cd "$HOME/OSIC/xschem"
+cp "$HOME/OSIC/open_pdks/sky130/sky130A/libs.tech/xschem/xschemrc" .
+
+cd "$HOME/OSIC/magic"
+cp "$HOME/OSIC/open_pdks/sky130/sky130A/libs.tech/magic/sky130A.magicrc" .
+
+mv sky130A.magicrc .magicrc
+
+cd "$HOME/OSIC/open_pdks"
+sudo apt -y install vim-gtk3 xterm
+
+cd "$HOME/OSIC"
+echo "Installing LVS and KLAYOUT..."
+sudo apt-get install netgen-lvs
+wget https://www.klayout.org/downloads/Ubuntu-22/klayout_0.29.5-1_amd64.deb -O klayout.deb
+sudo dpkg -i klayout.deb
+
 # Configure environment variables
 echo "Configuring environment variables..."
 echo "export PDK_ROOT=\$HOME/IHP-Open-PDK" >> ~/.bashrc
@@ -44,4 +98,5 @@ echo "export KLAYOUT_PATH=\"\$HOME/.klayout:\$PDK_ROOT/\$PDK/libs.tech/klayout\"
 echo "export KLAYOUT_HOME=\$HOME/.klayout" >> ~/.bashrc
 source ~/.bashrc
 
+# Final message
 echo "Installation and setup complete! Please restart your terminal or run 'source ~/.bashrc' to apply changes."
