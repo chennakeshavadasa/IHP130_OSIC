@@ -1,44 +1,3 @@
-# IHP130 PDK Installation Guide
-
-## Overview
-This guide provides step-by-step instructions to install the IHP130 PDK and the necessary open-source tools for IC design and simulation. The installation script automates the setup process, ensuring all dependencies are properly configured.
-
-## Prerequisites
-Before running the installation script, ensure that:
-- You are using **Ubuntu 22.04 LTS** or a compatible Linux distribution.
-- You have **sudo (administrator) privileges**.
-- You have at least **80GB of free disk space** for installation and simulation files.
-
-## Step-by-Step Installation
-
-### 1. Download the Installation Script
-Run the following command to download the script:
-```bash
-wget https://raw.githubusercontent.com/your-repo/install_ihp130_pdk.sh
-```
-
-### 2. Give Execution Permission
-Before running the script, make it executable:
-```bash
-chmod +x install_ihp130_pdk.sh
-```
-
-### 3. Run the Script
-Execute the script to install all required tools and the PDK:
-```bash
-./install_ihp130_pdk.sh
-```
-This process may take some time, so be patient.
-
-### 4. Apply Environment Variables
-After installation, restart your terminal or run:
-```bash
-source ~/.bashrc
-```
-
-## Installation Script (install_ihp130.sh)
-Below is the complete script that automates the installation of IHP130 PDK and required tools:
-```bash
 #!/bin/bash
 
 # Exit immediately if a command exits with a non-zero status
@@ -141,10 +100,3 @@ source ~/.bashrc
 
 # Final message
 echo "Installation and setup complete! Please restart your terminal or run 'source ~/.bashrc' to apply changes."
-```
-
-## Debugging and Troubleshooting
-If any step fails, refer to the logs and try running the missing commands manually. See the [Debugging and Troubleshooting](#debugging-and-troubleshooting) section for more help.
-
-For further assistance, check the official documentation links provided at the end of this guide.
-
